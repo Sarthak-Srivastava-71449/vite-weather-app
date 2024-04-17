@@ -12,13 +12,13 @@ const Weather: React.FC = () => {
   const fetchWeather = async () => {
     try {
       const geoResponse =
-      await axios.get(`http://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=5&appid=${import.meta.env.APP_API_KEY}`);
+      await axios.get(`http://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=5&appid=${import.meta.env.PUBLIC_ENV__APP_API_KEY}`);
 
     // Assuming the first result is the city we want
     const { lat, lon } = geoResponse.data[0];
 
     const weatherResponse =
-      await axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${import.meta.env.APP_API_KEY}`);
+      await axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${import.meta.env.PUBLIC_ENV__APP_API_KEY}`);
       setWeatherData(weatherResponse.data);
     } catch (error) {
       console.error('Error fetching weather:', error);
